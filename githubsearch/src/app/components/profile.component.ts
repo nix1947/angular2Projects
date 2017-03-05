@@ -8,12 +8,12 @@ import { GithubService } from '../services/github.service';
 
 })
 export class ProfileComponent {
-    user: any[];
+    user: any;
     repos: any[];
     username: string = " "
 
     constructor(private _githubService: GithubService) {
-
+        this.user = false;
     }
 
     searchUser() {
