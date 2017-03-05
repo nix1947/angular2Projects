@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="col-md-12">
+    <form class="well">
+      <div class="from-group">
+        <input type="text"
+        [(ngModel)]="username"
+        name="username"
+        class="form-control"
+        placeholder="Search github users..."
+        (keyup)="searchUser()"
+        >
+
+      </div>
+    </form>
+  </div>
+</div>
+
+<div *ngIf=user>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{user.name}}</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-4">
+          <img class="img-thumbnail"src="{{user.avatar_url}}" alt="">
+          <a class="btn btn-default" href="{{user.html_url}}">View Profile</a>
+        </div>
+        <div class="col-md-8">
+          <span class="label label-success">{{user.public_repos}} Public Repositories</span>
+          <span class="label label-info">{{user.pubic_gists}} Public Gists</span>
+          <span class="label label-default">{{user.followers}} Followers</span>
+          <span class="label label-primary">{{user.following}} Following</span>
+          <br>
+          <br>
+        <ul class="list-group">
+          <li class="list-group-item"><strong>Username: </strong>{{user.login}}</li>
+          <li class="list-group-item"><strong>Location: </strong>{{user.location}}</li>
+          <li class="list-group-item"><strong>Email: </strong>{{user.email}}</li>
+          <li class="list-group-item"><strong>Blog: </strong>{{user.blog}}</li>
+          <li class="list-group-item"><strong>Member Since: </strong>{{user.created_at}}</li>
+        </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">User repositories</h3>
+  </div>
+   <!-- panel body -->
+   <div class="panel-body">
+     <div *ngFor="let repo of repos">
+         <div class="col-md-9">
+           <h4><a  target="_blank" href="{{repo.html_url}}">{{repo.name}}</a></h4>
+             <p>{{repo.description}}</p>
+
+         </div>
+         <div class="col-md-3">
+           <span class="label label-primary">{{repo.watchers}}</span>
+           <span class="label label-primary">{{repo.forks}}</span>
+
+         </div>
+
+     </div>
+   </div>
+    <hr>
+</div>
+
+</div>
